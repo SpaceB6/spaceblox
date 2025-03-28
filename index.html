@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - SpaceBLOX</title>
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js"></script>
+    <script type="module" defer src="home.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Top Bar Style */
+        .top-bar {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            background-color: #333;
+            color: white;
+            padding: 10px;
+        }
+
+        .top-bar img {
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            margin-left: 10px;
+        }
+
+        .welcome-message {
+            padding: 20px;
+            text-align: center;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <span id="username"></span>
+        <img id="user-icon" src="https://spaceb6.github.io/spaceblox/images/png/user_icon.png" alt="User Icon">
+    </div>
+
+    <div class="welcome-message">
+        <h1>Hi! Welcome To SpaceBLOX!</h1>
+    </div>
+</body>
+</html>
