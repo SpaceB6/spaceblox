@@ -5,10 +5,10 @@ const firebaseConfig = window.FIREBASE_CONFIG; // Load config from firebase-conf
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-// Redirect logged-in users
+// Check if the user is already logged in
 onAuthStateChanged(auth, (user) => {
     if (user) {
-        window.location.href = "index.html"; // Change to your main page
+        window.location.href = "home.html"; // Redirect to home if logged in
     }
 });
 
@@ -23,7 +23,7 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
         console.log("User logged in:", userCredential.user);
         alert("Login successful! Redirecting...");
-        window.location.href = "index.html"; // Redirect to main page
+        window.location.href = "home.html"; // Redirect to home page on success
     } catch (error) {
         errorMessage.textContent = error.message; // Show error message
     }
