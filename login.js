@@ -1,17 +1,22 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
 import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
 
-const firebaseConfig = window.FIREBASE_CONFIG; // Load config from firebase-config.js
+// Firebase config (use your config from Firebase Console)
+const firebaseConfig = window.FIREBASE_CONFIG; // Ensure this is available
+
+// Initialize Firebase app
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 // Check if the user is already logged in
 onAuthStateChanged(auth, (user) => {
     if (user) {
-        window.location.href = "home.html"; // Redirect to home if logged in
+        // Redirect user to home if already logged in
+        window.location.href = "home.html";
     }
 });
 
+// Handle login form submission
 document.getElementById("login-form").addEventListener("submit", async (e) => {
     e.preventDefault();
     
@@ -20,11 +25,14 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
     const errorMessage = document.getElementById("error-message");
 
     try {
+        // Try logging in with Firebase
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
         console.log("User logged in:", userCredential.user);
-        alert("Login successful! Redirecting...");
-        window.location.href = "home.html"; // Redirect to home page on success
+        
+        // On success, redirect to home page
+        window.location.href = "home.html"; // Redirect to home
     } catch (error) {
-        errorMessage.textContent = error.message; // Show error message
+        // Show error message if login fails
+        errorMessage.textContent = "Error: " + error.message;
     }
 });
